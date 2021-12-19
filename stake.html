@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP 
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Edited by Michel Aka
+-->
+<html>
+	<head>
+		<title>$DAXE - The True Blockchain Certificate of Deposit</title>
+		<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/timeline.css?v=3" />
+		<link rel="stylesheet" href="assets/css/main.css?=v3" />
+		<link rel="stylesheet" href="assets/css/home.css?v=3" />
+		<link rel="icon" href="images/DAXE_LOGO_9.1.PNG" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script> -->
+		<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+
+		<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+			
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-213403724-1">
+		</script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-213403724-1');
+		</script>
+	</head>
+	<body class="is-preload"  onload="setNetwork();initialize();updateDashboard();">
+						<!-- Wrapper -->
+						<div id="wrapper">
+						<header class="hero">
+										<!-- Sidebar -->
+										<section id="sidebar">
+											<div class="inner">
+												<div class="logo"><img src="images/Daxe_Logo.svg"></div>
+												<nav>
+													<ul>
+														<li><a href="/">Welcome</a></li>
+														<li><a href="stake.html">Stake</a></li>
+														<!-- <li><a href="#two">White Paper</a></li> -->
+														<li><a href="#six">FAQ & White Paper</a></li>
+														<li><a href="token.html">Token Allocation</a></li>
+														<li>
+															<div onclick="connectWallet()" id="networkNameID"> Network </div>
+															<!-- <select name="Netowrk" id="networkNameid">
+																<option value="56" selected>BSC</option>
+																<option value="43113">AVAX</option>
+																<option value="97">BSC Test</option>
+																<option value="43113">AVAX</option>
+
+															</select> -->
+														</li>							
+														<li>
+															<button onclick="connectWallet()" id="connectButtonID">Not Connected </button>
+														</li>
+													</ul>
+												</nav>
+											</div>
+										</section>
+										<!-- Intro -->
+										<section id="intro" class="wrapper fullscreen fade-up">
+												<div class="inner">		
+													<div class="hero-text">
+															<h1>The first multi-chain 
+																	Certificate of Deposit.</h1>
+																	<ul class="hero-points">
+																		<li><img src="images/icons/interest_paid_daily_icon.svg" alt="" >Interest Paid Daily.</li>
+																		<li><img src="images/icons/low_transaction_fees_icon.svg" alt="" >Very low transaction fees.</li>
+																		<li><img src="images/icons/multiply_holding_icon.svg" alt="" >Multiply holdings over chains.</li>
+																	</ul>
+																<ul class="actions">
+																	<li><a href="https://pancake.kiemtienonline360.com/#/swap?outputCurrency=0x5435F764717dc82198EdA554B31394fF4b7D2b47" target="_blank" id="buyURLID" class="button scrolly">Buy DAXE</a></li>
+																	<li><a href="#stake_start1" class="button scrolly">Stake DAXE</a></li>
+																</ul>
+															</br>
+
+										
+																	
+													</div>	
+													<div class="hero-figure">
+														<img src="images/Daxe-Main-Hero.png" alt="">
+													</div>				
+													
+												</div>
+											</section>
+						</header>
+
+						<main class="wrapper spotlights">
+
+              <div class="content">
+								<div class="inner">
+
+								</div>
+							</div>
+						</section>
+						<section >
+							<div class="content">
+								<div class="inner">
+
+                    <h2>Stake</h2> 
+                    <button onclick="connectWallet()" style="background-color : #312450" id="refreshButtonID">Connect/Refresh</button>
+  
+                    <p>
+                      <div>
+                        <table>
+                          <tr>
+                            <td>
+                                <span class="tag">Wallet Address</span> <label id = "addressID">Not Connected</label>
+  
+                            </td>
+                            <td>
+                              <span class="tag">DAXE Balance</span><label id = "DAXBalanceID"> ... DAXE </label>
+                              
+                            </td>
+                          </tr>
+                        </table>
+                        <Table>
+                            <tr>
+                              <td>
+                                <label id = "stakedDAXID" class="tag"> Stake Amount: </label>
+                                
+                                  <input id="amountToStakeID" type="text" placeholder="--Amount--" onchange="calculateDays()"></input>
+                                  <p id="selectMaxDaxID" onclick="selectMaxDax()">↑ Tap here for Max ↑</p>  
+                              </td>
+                              <td>	
+                                <label for="releaseDateID" class="tag">Select stake end:</label>
+                                <input id="releaseDateID" type="datetime-local" name="partydate" min="2021-11-01T08:30" max="2038-11-30T16:30" onchange="calculateDays()">
+                                <div><span id="numDaysStakeID">0</span> Days</div>
+                                <!-- <div id="numDaysStakeID">0</div>Days									 -->
+                                
+                              </td>
+                            </tr>
+                            <tr>
+                              <div id="stakingErrorMessage" style="background-color : #ffa1a1bd"></div>
+                            </tr>
+                            <tr>
+                              <td>
+                                  <label class="payout">Projected pay out:  <span id="projectedPayoutID" >0</span></label>
+                              </td>
+                              <td class="btn-td">
+  
+                                      <button onclick="stakeToken()" style="background-color : #5E42A6;border:none!important;" >Stake</button>
+  
+  
+                                  <a href="https://pancake.kiemtienonline360.com/#/swap?outputCurrency=0x486c720F1462abD0C41e7919A62d0A3E5affFC6b" id = "buyURLID2" target="_blank" class="button scrolly">Get DAXE &#x27A1</a>
+                              </td>
+  
+                            </tr>
+                            
+                          </Table>
+    
+  
+                        <!-- DAXE STAKED <label id = "stakedDAXID"></label>  -->
+                            <Table class=”sortable” id ="DAXBalanceID2">
+                                <thead>
+                                    <tr>
+                                      <th>ID</th>
+                                      <th>Initial stake</th>
+                                      <th>Start</th>
+                                      <th>Release Date</th>
+                                      <th>Progress</th>
+                                      <!-- <th>Initial stake</th> -->
+                                      <th title="Current Value = Initial DAXE Staked + Interest to-date + Estimated payout from penalties">Current Value</th>
+                                      <th title="Projected Value = Initial DAXE staked + Total Interest paid at end of stake + Estimated payout from penalties">Projected Value</th>
+                                      <th title="Status = Active / Matured / Cancelled ">Status</th>
+                                      <th title="Penalty = Amount deducted from an early unstake">Penalty</th>
+                                      <th title="Payout = Amount paid out to staking wallet once stake is ended">Payout</th>
+                                   </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>--</td>
+                                          <td>--</td>
+                                          <!-- <td>--</td> -->
+                                          <td>--</td>
+                                          <td>--</td>
+                                          <td>--</td>
+                                          <td>--</td>
+                                          <td>--</td>
+                                          <td>--</td>
+                                          <td>--</td>
+                                          <td>--</td>
+  
+                                       </tr>																	
+                                  </tbody>
+  
+                            </Table>
+                          
+                        <!-- <input id="sakeDuration" type="text" placeholder="7"> Days -->
+                        <!-- <button onclick="connectWallet()">Connect Wallet </button> -->
+                      </div>
+                      <div>
+                          <p>
+                              Current Value = Initial DAXE Staked + Interest to-date + Estimated payout from penalties</br>
+                              Projected Value = Initial DAXE staked + Total Interest paid at end of stake + Estimated payout from penalties</br>
+                              Interest to-date = Base Interest (20% APR) + Long Stake interest (Exponetial over time)</br>
+                              Penalties payout = Share of the penalties distributed to your stake</br>
+                              Penalty = Penalty deducted from an early unstake</BR>
+                              Payout = Amount paid out to staking wallet once stake is ended<BR>
+                              Status = Active / Matured / Cancelled</br>
+                            </p>
+                        <!-- <Table>
+                          <tr>
+                            ''
+                              <td><p style="color:white;"><label class="tag">Initial Stake: </label> Initial amount of token staked.</p></td>
+                                <td><p style="color:white;"><label class="tag">Current Value: </label> Initial amount + cummulated base interest + cummulated long interest+ bonus from other users early unstake.</p></td>
+                          </tr>
+                      </Table> -->
+                      </div>
+                    </p>
+                    <ul class="actions">
+                      <!-- <li><a href="generic.html" class="button">Stake</a></li> -->
+                    </ul>
+
+
+
+
+
+
+
+
+
+
+
+									<h2>End Stake</h2>
+									<p id = "blockNumber">
+											<Table>
+													<tr>
+															<td>
+																	<div>
+																			<label class="tag">Staked DAXE</label> <label id = "DAXBalanceID"> ... DAXE </label>
+																	</div>
+	
+															</td>
+															<td>
+															</td>
+													</tr>
+													<tr>
+														<td>
+																<input id="stakeID" type="text" placeholder="--Enter Stake ID--"></input>
+																<p>Enter Stake ID above</p>
+														</td>
+														<td>
+															<button onclick="unstakeToken()">End Stake </button> 
+														</td> 
+													</tr>
+											</Table>
+
+                  </p>
+
+
+									<ul class="actions">
+											
+										<!-- <li><a href="generic.html" class="button">Unstake</a></li> -->
+									</ul>
+								</div>
+							</div>
+
+
+	
+				    </main>	
+			</div>
+		
+		<!-- Footer -->
+			<footer id="footer" class="wrapper">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; DaxeToken. All rights reserved.</li>
+					</ul>
+				</div>
+			</footer>
+  
+		<!-- Scripts -->
+			<script src="dist/daxeScript.js?v=12.18" type="application/javascript"></script>
+			<script src="dist/countdown.js?v=12.18" type="application/javascript"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

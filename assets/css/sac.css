@@ -1,0 +1,276 @@
+.inner {
+  padding-top: 0 !important;
+}
+table.sac-net {
+  background-color: #5e42a6;
+  border-radius: 30px;
+  overflow: hidden;
+}
+table.sac-net tr {
+  background: none !important;
+}
+table.sac-net th {
+  text-align: center;
+  background-color: white;
+  color: #5e42a6;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  text-align: center;
+  padding: 2em 0;
+  vertical-align: middle;
+}
+table.sac-net th:nth-of-type(1) {
+  border-bottom-left-radius: 30px;
+}
+
+table.sac-net th:nth-of-type(2) {
+  border-bottom-right-radius: 30px;
+}
+table.sac-net tr td:nth-of-type(1) {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.7em;
+}
+table.sac-net tr td:nth-of-type(2) a {
+  border-bottom: none !important;
+}
+table.sac-net tr td:nth-of-type(2) a:hover {
+  border-bottom: 1px solid white !important;
+}
+table.sac-net td {
+  text-align: center;
+  width: 50%;
+  color: white;
+  font-size: 0.75em;
+}
+.sac-p {
+  text-align: center;
+  margin: 5% auto;
+}
+
+#sac-list {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+#sac-list .coin-card {
+  background-color: white;
+  padding: 30px 0;
+  color: black;
+  width: 16%;
+  border-radius: 20px;
+}
+#sac-list .coin-text {
+  font-size: 0.8em;
+  font-weight: 700;
+  color: #5e42a6;
+  padding: 10px 0 0 0;
+  margin: 0;
+}
+#sac-list .coin-image {
+  width: 50%;
+}
+.sac-center {
+  text-align: center;
+}
+
+.hero {
+  display: flex;
+}
+.hero div {
+  flex-basis: 50%;
+}
+.hero h1 {
+  margin-top: 25%;
+}
+.hero img {
+  width: 100%;
+}
+.hero div:nth-of-type(1) {
+  padding-right: 100px;
+}
+.hero div:nth-of-type(2) {
+  text-align: right;
+}
+
+.sac-p {
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+}
+.secondary-sac {
+  text-transform: lowercase;
+  font-weight: 100;
+  font-size: 0.8em;
+}
+.sac-number {
+  background-color: white;
+  color: #5e42a6;
+  padding: 10px 21px;
+  border-radius: 50%;
+  text-align: center;
+  display: block;
+  width: fit-content;
+  margin: 20px auto;
+}
+
+.highlight {
+  color: #5e42a6;
+  background-color: white;
+  padding: 2px 3px;
+}
+
+.token-copy {
+  background-color: white;
+  border-radius: 1000px;
+}
+.token-copy td {
+  width: 50%;
+  text-align: center;
+}
+
+.token-copy td label {
+  color: #5e42a6;
+}
+.token-copy tr {
+  background: none !important;
+  border: none;
+}
+.token-btn {
+  color: #5e42a6 !important;
+  border-color: #5e42a6 !important;
+}
+.token-btn:hover {
+  border-color: #5e42a6 !important;
+  box-shadow: 1px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+  display: flex;
+  color: white;
+  padding: 10% 0;
+}
+.container .column {
+  flex-basis: 50%;
+}
+
+.headline {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.dis-list {
+  list-style: none;
+}
+.dis-list li {
+  font-size: 0.8em;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.dis-number {
+  background-color: white;
+  color: #5e42a6;
+  padding: 1% 2%;
+  margin-right: 10px;
+  border-radius: 50%;
+  text-align: left;
+  font-weight: 500;
+}
+.sch-list {
+  list-style: none;
+}
+.sch-list .rate {
+  font-size: 0.8em;
+  margin-bottom: 20px;
+  opacity: 0.9;
+  background-color: #5e42a6;
+  border-radius: 100px;
+  padding: 10px 20px;
+  text-align: center;
+}
+.sch-list .date {
+  font-size: 0.75em;
+  font-weight: 600;
+  background-color: white;
+  color: #5e42a6;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 100px;
+}
+
+.sch-list li {
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+/* RESPONSIVITY */
+
+@media screen and (max-width: 736px) {
+  .hero div:nth-of-type(1) {
+    padding-right: 10%;
+  }
+
+  .hero div:nth-of-type(2) {
+    flex-basis: 80%;
+  }
+
+  .hero div {
+    flex-basis: 20%;
+  }
+
+  #sac-list .coin-card {
+    width: 32%;
+    margin-bottom: 10px;
+  }
+  .token-copy td {
+    width: 100%;
+    display: block;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .container .column {
+    flex-basis: 100%;
+    margin: 20px 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero {
+    flex-direction: column-reverse;
+  }
+  .hero h1 {
+    font-size: 1.5em;
+    margin-top: 5%;
+  }
+  table.sac-net th {
+    padding: 2.5em 1em;
+    font-size: 0.65em;
+  }
+  #sac-list .coin-card {
+    width: 48%;
+  }
+  .token-copy {
+    border-radius: 10px;
+  }
+
+  .token-copy td label {
+    font-size: 0.8em;
+  }
+  .sch-list {
+    padding-left: 0;
+  }
+  .sch-list li {
+    padding-left: 0;
+  }
+  .sch-list li:nth-of-type(8) .rate {
+    display: block;
+    margin-top: 15px;
+  }
+}

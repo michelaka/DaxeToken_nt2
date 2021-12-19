@@ -1,0 +1,609 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP 
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Edited by Michel Aka
+-->
+<html>
+	<head>
+		<title>$DAXE - The True Blockchain Certificate of Deposit</title>
+		<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/timeline.css?v=3" />
+		<link rel="stylesheet" href="assets/css/main.css?=v3" />
+		<link rel="stylesheet" href="assets/css/home.css?v=3" />
+		<link rel="icon" href="images/DAXE_LOGO_9.1.PNG" />
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script> -->
+		<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+
+		<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+			
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-213403724-1">
+		</script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-213403724-1');
+		</script>
+	</head>
+	<body class="is-preload"  onload="initialize()">
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#one">Stake</a></li>
+							<!-- <li><a href="#two">White Paper</a></li> -->
+							<li><a href="#six">FAQ & White Paper</a></li>
+							<li><a href="token.html">Token Allocation</a></li>
+							<li>
+								<div onclick="connectWallet()" id="networkNameID" style="color:rgb(248, 151, 151)"> Network </div>
+							</li>							
+							<li>
+								<button onclick="connectWallet()" id="connectButtonID">Not Connected </button>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<img src="images/DAXE WHITE LOGO.svg?v=4.2" width="50%" height="50%" />
+							<!-- <h1>$DAXE </h1>
+							<p>The True Blockchain Certificate of Deposit.</p> -->
+							<ul class="actions">
+								<li><a href="https://pancake.kiemtienonline360.com/#/swap?outputCurrency=0x5435F764717dc82198EdA554B31394fF4b7D2b47" target="_blank" id="buyURLID" class="button scrolly">Buy DAXE</a></li>
+								<li><a href="#one" class="button scrolly">Stake DAXE</a></li>
+								<li>
+									<a target="_blank" href="https://www.dextools.io/app/bsc/pair-explorer/0xb5d9b6d1c2a8d92d3215e30266a11c5864add844" class="button scrolly" style="background-color :white; color:#5E42A6!important;">
+										DAXE Charts &#x27A1</a>
+								</li>
+							</ul>
+							<br/>
+							<br/>
+
+							<table>
+								<tr>
+									<td><button class="token-btn" onclick="copyDAXEAddress()" >Copy Address</button></TD>
+									<td><label> 0x5106f787E8778a86D1928ed5ad0B0215dBFA00b8 </label></TD>
+								</tr>
+								<tr>
+									<td>Active Stakes Count: </TD>
+									<td><span id="stakeCountID">0</span></TD>
+								</tr>										 
+							</table>
+							<a href="sacrifice.html" class="button scrolly" style="background-color :white; color:#5E42A6!important;">Sacrifice for DAXE on AVAX &#x27A1</a>
+
+							
+							
+
+						</div>
+						
+					</section>
+
+				<!-- One -->
+					<section id="one" style="background-color: white;" class="wrapper spotlights">
+						<section>
+							<a href="#" class="image"><img src="images/PIC-1.jpg" alt="" data-position="center center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2 style="color:#5E42A6;">Stake</h2> 
+									<button onclick="connectWallet()" style="background-color : #312450" id="refreshButtonID">Connect/Refresh</button>
+
+									<p>
+										<div>
+											<table>
+												<tr>
+													<td>
+															<span class="tag">Wallet Address</span> <label id = "addressID">Not Connected</label>
+
+													</td>
+													<td>
+														<span class="tag">DAXE Balance</span><label id = "DAXBalanceID"> ... DAXE </label>
+														
+													</td>
+												</tr>
+											</table>
+											<Table>
+													<tr>
+														<td>
+															<label id = "stakedDAXID" class="tag"> Stake Amount: </label>
+															
+																<input id="amountToStakeID" type="text" placeholder="--Amount--" onchange="calculateDays()"></input>
+																<p id="selectMaxDaxID" onclick="selectMaxDax()">↑ Tap here for Max ↑</p>  
+														</td>
+														<td>	
+															<label for="releaseDateID" class="tag">Select stake end:</label>
+															<input id="releaseDateID" type="datetime-local" name="partydate" min="2021-11-01T08:30" max="2038-11-30T16:30" onchange="calculateDays()">
+															<div><span id="numDaysStakeID">0</span> Days</div>
+															<!-- <div id="numDaysStakeID">0</div>Days									 -->
+															
+														</td>
+													</tr>
+													<tr>
+														<div id="stakingErrorMessage" style="background-color : #ffa1a1bd"></div>
+													</tr>
+													<tr>
+														<td>
+																<label class="payout">Projected pay out:  <span id="projectedPayoutID" >0</span></label>
+														</td>
+														<td class="btn-td">
+
+																		<button onclick="stakeToken()" style="background-color : #5E42A6;border:none!important;" >Stake</button>
+
+
+																<a href="https://pancake.kiemtienonline360.com/#/swap?outputCurrency=0x486c720F1462abD0C41e7919A62d0A3E5affFC6b" id = "buyURLID2" target="_blank" class="button scrolly">Get DAXE &#x27A1</a>
+														</td>
+
+													</tr>
+													
+												</Table>
+	
+
+											<!-- DAXE STAKED <label id = "stakedDAXID"></label>  -->
+													<Table class=”sortable” id ="DAXBalanceID2">
+															<thead>
+																	<tr>
+																		<th>ID</th>
+																		<th>Initial stake</th>
+																		<th>Start</th>
+																		<th>Release Date</th>
+																		<!-- <th>Initial stake</th> -->
+																		<th>Current Value</th>
+																		<th>Status</th>
+																		<th>Penalty</th>
+																		<th>Payout</th>
+																 </tr>
+																</thead>
+																<tbody>
+																		<tr>
+																				<td>--</td>
+																				<td>--</td>
+																				<!-- <td>--</td> -->
+																				<td>--</td>
+																				<td>--</td>
+																				<td>--</td>
+																				<td>--</td>
+																				<td>--</td>
+																				<td>--</td>
+
+																		 </tr>																	
+																</tbody>
+
+													</Table>
+												
+											<!-- <input id="sakeDuration" type="text" placeholder="7"> Days -->
+											<!-- <button onclick="connectWallet()">Connect Wallet </button> -->
+										</div>
+										<div>
+											<Table>
+												<tr>
+													''
+														<td><p style="color:white;"><label class="tag">Initial Stake: </label> Initial amount of token staked.</p></td>
+															<td><p style="color:white;"><label class="tag">Current Value: </label> Initial amount + cummulated base interest + cummulated long interest+ bonus from other users early unstake.</p></td>
+												</tr>
+										</Table>
+										</div>
+									</p>
+									<ul class="actions">
+										<!-- <li><a href="generic.html" class="button">Stake</a></li> -->
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section style="background-color:#5E42A6;">
+							<a href="#" class="image"><img src="images/PIC-2.jpg" alt="" data-position="top center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>End Stake</h2>
+									<p id = "blockNumber">
+											<Table>
+													<tr>
+															<td>
+																	<div>
+																			<label class="tag">Staked DAXE</label> <label id = "DAXBalanceID"> ... DAXE </label>
+																	</div>
+	
+															</td>
+															<td>
+															</td>
+													</tr>
+													<tr>
+														<td>
+																<input id="stakeID" type="text" placeholder="--Enter Stake ID--"></input>
+																<p>Enter Stake ID above</p>
+														</td>
+														<td>
+															<button onclick="unstakeToken()">End Stake </button> 
+														</td> 
+													</tr>
+											</Table>
+
+									</p>
+
+									<ul class="actions">
+											
+										<!-- <li><a href="generic.html" class="button">Unstake</a></li> -->
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section id="six" style="background-color:white;">
+							<a href="#five" class="image"><img src="images/PIC-33.jpg?v=6" alt="" data-position="center center" /></a>
+							<div class="content" style="color:#312450">
+								<div class="inner">
+									<h2 style="color:#5E42A6">FAQ</h2>
+									<p>DAXE: the people's certificate of deposit. </p>
+
+									<div>
+
+
+											<h3><span class="circle"></span>When is DAXE going live?</h3>
+													<ul>
+															<li>
+																Go-Live on BSC will be Nov 21 2021. Check our roadmap for timeline on other networks.
+															</li>
+													</ul>
+
+						
+											<h3><span class="circle"></span>What are the main advantages of DAXE?</h3>
+														<ul>
+																<li>
+																		Allow everyone that has missed the best value growth in HEX to have the opportunity to get similar gains. (HEX on pulse will not give 10,000% returns because HEX has already appreciated so much).
+																</li>
+																<li>Allow small players to participate: small hex purchases and small HEX stakes are priced out right now due to high transaction fees. 
+																</li>
+																<li>
+																	Holders of DAXE in early networks will be eligible for airdrops on future networks.
+																</li>
+
+														</ul>
+
+
+											
+												<h3><span class="circle"></span>What does DAX really do?</h3>
+																<ul>
+																	<li>DAXE is a store of value coin.</li>
+																	<li>None of that fancy stuff like ETH, or NFT or governance coins. </li>
+																	<li>DAXE is in the same camp as Bitcoin and HEX. They are both store of value. </li>
+																	<li>The way Bitcoin gains value is through adoption, same thing with HEX. The difference is that Bitcoin is a proof of work, DAXE is a proof of wait. 
+																			This means that DAXE rewards go to those who promise to stake (I.e. not sell) and it rewards them exponentially more as time increases.</li>
+																	<li>This last bit is important because when you stake, you take coins out of circulation and this contributes to supply shock, in turn growing the value of the coin.</li>
+																	<li>You can see the effect of this in the chart of <a href="https://www.tradingview.com/chart/HEXUSDC" target="_blank"> HEX.</a></li>
+
+																</ul>
+
+
+												<h3><span class="circle"></span>Is DAXE a HEX killer?</h3>
+																<ul>
+																	<li>	Absolutely not, in fact we love HEX and love @RichardHeart win. 1% of circulating supply of DAXE will be donated to the HEX Origin Address. <br/>
+																		We aim to provide another opportunity for those that missed the beginnings of HEX to take advantage of another Crypto Certificate of Deposit on networks 
+																		where the little guy isn't priced out.</li>
+																</ul>
+														
+
+												<h3><span class="circle"></span>What is DAXE token allocation?</h3>
+																<ul>
+																	<li>Just like HEX, DAXE will have an Origin Address with a similar allocation to that of the Origin address of HEX.
+																			The liquidity for DAXE will be intentionally kept low, we want supply economics to directly benefit holders.
+																			Circulating supply of DAX will be 220Bn.</li>
+																</ul>
+															
+															
+
+												<h3><span class="circle"></span>What will the initial Market Cap be?</h3>
+																<ul>
+																	<li>
+																			Initial Market Cap will be very small it will not exceed $5,000. 
+
+																			This will enable rapid value appreciation and will make sure that
+																			those who get it early benefit far more. 
+																			Just like HEX where those who jumped in early with modest amounts
+																			even outdid later whales. 
+				
+																			All that said, we are not promising anything to anyone.
+																			We encourage you to find out why it would be advantageous to
+																			participate in a cross-chain Certificate of Deposit, with low
+																			initial market cap and low LP, and understand why these are very
+																			important.<br/><br/>
+				
+																			Example: From $0.002 to $100 there is 50,000x return. 
+																			From $10M to $1Bn there is 100x return.
+																			
+																			So a bigger initial market cap isn't better for early investors.<br/><br/>
+																	</li>
+																</ul>
+												
+
+															<h3><span class="circle"></span>Will DAXE launch on any other network?</h3>
+															<ul>
+																<li>
+																		Initial networks will be BSC, AVAX, PulseChain, Solana.<BR/>
+																		The team is discussing possibility of launching on VLX, Polygon/Matic and ADA.
+																		These will be announced.
+																		Holders on early networks will be eligible for Airdrops on new networks.
+																</li>
+															</ul>
+
+
+															<h3><span class="circle"></span>DAXE Power?</h3>
+															<ul>
+																	<li>
+																		Locked liquidity for 5555 days.
+																	</li>
+																	<li>
+																			No pre-minting.
+																	</li>
+																	<li>
+																			No referrals programs.
+																	</li>
+																	<li>
+																			NO FEES. (No transaction fees, no reflection fees, or any other fees)
+																	</li>
+	
+															</ul>
+												
+									</div>
+
+									<div class="page">
+										<div class="timeline">
+
+
+												<div class="timeline__group">
+														<span class="timeline__year time" aria-hidden="true">Nov 21, 2021</span>
+														<div class="timeline__cards">
+															<div class="timeline__card card">
+																<header class="card__header">
+																	<time class="time" datetime="2008-02-02">
+																		<span class="time__day">7</span>
+																		<span class="time__month">Nov</span>
+																	</time>
+																</header>
+																<div class="card__content">
+																	<p>Sacrifice Phase starts.</p>
+																</div>
+															</div>
+															<div class="timeline__card card">
+																<header class="card__header">
+																	<time class="time" datetime="2008-09-01">
+																		<span class="time__day">21</span>
+																		<span class="time__month">Nov</span>
+																	</time>
+																</header>
+																<div class="card__content">
+																		<p>Sacrifice phase ends</p>
+																	</div>
+															</div>
+														</div>
+													</div>
+
+
+
+
+
+											<div class="timeline__group">
+												<span class="timeline__year time" aria-hidden="true">Nov 22, 2021</span>
+												<div class="timeline__cards">
+													<div class="timeline__card card">
+														<header class="card__header">
+															<time class="time" datetime="2008-02-02">
+																<span class="time__day">22</span>
+																<span class="time__month">Nov</span>
+															</time>
+														</header>
+														<div class="card__content">
+															<p>GO-LIVE on BSC.</p>
+														</div>
+													</div>
+													<div class="timeline__card card">
+														<header class="card__header">
+															<time class="time" datetime="2008-09-01">
+																<span class="time__day"></span>
+																<span class="time__month">Nov-Dec</span>
+															</time>
+														</header>
+														<div class="card__content">
+																<p>BSC to AVAX Snapshot</p>
+															</div>
+													</div>
+												</div>
+											</div>
+
+
+
+											<div class="timeline__group">
+												<span class="timeline__year time" aria-hidden="true">Dec 12, 2021</span>
+												<div class="timeline__cards">
+													<div class="timeline__card card">
+														<header class="card__header">
+															<time class="time" datetime="2008-02-02">
+																<span class="time__day">12</span>
+																<span class="time__month">Dec</span>
+															</time>
+														</header>
+														<div class="card__content">
+															<p>GO-LIVE on AVAX.</p>
+														</div>
+													</div>
+													<div class="timeline__card card">
+														<header class="card__header">
+															<time class="time" datetime="2008-09-01">
+																<span class="time__day"></span>
+																<span class="time__month">Dec-Jan</span>
+															</time>
+														</header>
+														<div class="card__content">
+																<p>AVAX to PulseChain</p>
+															</div>
+													</div>
+												</div>
+			
+			
+
+												
+										</div>
+										<div class="timeline__group">
+												<span class="timeline__year time" aria-hidden="true">Dec 22, 2021</span>
+												<div class="timeline__cards">
+													<div class="timeline__card card">
+														<header class="card__header">
+															<time class="time" datetime="2008-02-02">
+																<span class="time__day">22</span>
+																<span class="time__month">Dec</span>
+															</time>
+														</header>
+														<div class="card__content">
+															<p>DAXE Cross-Chain Bridge is live.</p>
+														</div>
+													</div>
+													<div class="timeline__card card">
+														<header class="card__header">
+															<time class="time" datetime="2008-09-01">
+																<span class="time__day"></span>
+																<span class="time__month">Dec-Jan</span>
+															</time>
+														</header>
+														<div class="card__content">
+																<p>PulseChain Go-Live</p>
+															</div>
+													</div>
+												</div>
+
+
+
+
+
+									</div>
+
+									</div>
+									
+									
+									
+									<ul class="actions">
+										<li><a href="#one" class="button">Home</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</section>
+
+				<!-- Two -->
+					<section id="two" class="wrapper style3 fade-up">
+						<div class="inner">
+							<h2> $DAXE White Paper & Tokenomics</h2>
+							<p>DAXE is a true crypto certificate of deposit token on BSC. DAXE tokenomics significantly rewards long term stakers.
+						 </p>
+							<div class="features">
+								<section>
+									<span class="icon solid major fa-code"></span>
+									<h3>20% Base Interest + Bonus for longer stakes</h3>
+									<p>Interest on staked principal is calculated and compounded daily.</p>
+									<p>Longer stakes receive a base-2 exponentially increasing bonus interest. This interest also compounds daily.</p>
+								</section>
+								<section>
+									<span class="icon major fa-gem"></span>
+									<h3>No hidden fees and 3% Deflation On Early Stakes</h3>
+									<p>No tx fees/ no reflexion fees or any other fees.</p>
+									<p>3% of early unstaked principle is burned.</p>
+									<p>1% of DAXE circulating supply will be donated to Richard Heart.</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-lock"></span>
+									<h3>Single Coin / No "Shares" Coin</h3>
+									<p>Unlike other coins, DAXE transmits all benefits directly to stakers without an intermediary coin.</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-cog"></span>
+									<h3>No Admin Keys</h3>
+									<p>No admin Keys.</p>
+									<p>No back door access.</p>
+									<p>Locked liquidity.</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-desktop"></span>
+									<h3>Early Unstake Penalties</h3>
+									<p>Stakes can span from 1 to 5555 days. However, if a stake is ended early it is subject to the following penalties. 1) stakeLength < 50% will result in an 82.5% penalty on stake principle 
+									2) 50% < stakeLength > 100% penalty is proportional to stake time remaining. </p>
+								</section>
+								<section>
+									<span class="icon solid major fa-link"></span>
+									<h3>Early Unstake Benefits Current Stakers</h3>
+									<p>All penalties computed from emergency/early unstakes are proportionally redistributed to all other stakers' stake.</p>
+								</section>
+							</div>
+							<ul class="actions">
+								<li><a href="#one" class="button">Home</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- Three -->
+					<section id="three" class="wrapper style1 fade-up">
+						<div class="inner">
+							<div class="split style1">
+								<section>
+										<h2>About The Team</h2>
+										<p>The DAXE team is made of cryto experts and AI Industry developers who have come together to design the best store-of-value token to date.</p>
+			
+								</section>
+								<section>
+									<ul class="contact">
+
+										<li>
+											<h3>Social</h3>
+											<ul class="icons">
+												<li><a href="https://t.me/daxetoken" target="_blank" ><img src="images/telegram_icon2.png" width="20%" height="20%"/></a></li>
+												<li><a   href="https://twitter.com/daxetoken" target="_blank"><img src="images/twitter_icon2.png" width="17%" height="17%"/></a></li>
+												<!-- <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+												<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li> -->
+											</ul>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; DaxeToken. All rights reserved.</li><li>Design: <a href="#">DAXE Token Team</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="dist/daxeScript.js?v=8" type="application/javascript"></script>
+			<script src="dist/countdown.js?v=8" type="application/javascript"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
