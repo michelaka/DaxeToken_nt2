@@ -11,9 +11,9 @@
 		<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/timeline.css?v=3" />
-		<link rel="stylesheet" href="assets/css/main.css?=v3" />
-		<link rel="stylesheet" href="assets/css/home.css?v=3" />
+		<link rel="stylesheet" href="assets/css/timeline.css?v=12.19" />
+		<link rel="stylesheet" href="assets/css/main.css?v=12.19" />
+		<link rel="stylesheet" href="assets/css/home.css?v=12.19" />
 		<link rel="icon" href="images/DAXE_LOGO_9.1.PNG" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,7 +98,7 @@
 																	
 													</div>	
 													<div class="hero-figure">
-														<img src="images/Daxe-Main-Hero.png" alt="">
+														<img src="images/Daxe-Main-Hero.png?v12.18" alt="">
 													</div>				
 													
 												</div>
@@ -112,110 +112,87 @@
 				<!-- One -->
 					
 						<section class="stake_pop stake_start" id="stake_start1">
-							<div class="content">
-								<div class="inner">
-									<h2 style="color:#5E42A6;">Stake</h2> 
-									<button onclick="connectWallet()" style="background-color : #312450" id="refreshButtonID">Connect/Refresh</button>
+							<div class="stake_container">
+								<a href="#" class="close">X</a>
+												<div class="stake_left">
 
-									<p>
-										<div>
-											<table>
-												<tr>
-													<td>
-															<span class="tag">Wallet Address</span> <label id = "addressID">Not Connected</label>
+																<button onclick="connectWallet()" id="refreshButtonID">Connect/Refresh</button>
+																<ul class="stake_cord">
+																	<li>
+																			<span>Wallet Address</span> <label id ="addressID">Not Connected</label>
+																	</li>
+																	<li>
+																			<span>DAXE Balance</span><label id = "DAXBalanceID"> ... DAXE </label>
+																	</li>
+																	<li>
+																			<span>Projected pay out: </span><label id="projectedPayoutID" >0</label>
+																	</li>
+																</ul>
 
-													</td>
-													<td>
-														<span class="tag">DAXE Balance</span><label id = "DAXBalanceID"> ... DAXE </label>
-														
-													</td>
-												</tr>
-											</table>
-											<Table>
-													<tr>
-														<td>
-															<label id = "stakedDAXID" class="tag"> Stake Amount: </label>
-															
-																<input id="amountToStakeID" type="text" placeholder="--Amount--" onchange="calculateDays()"></input>
-																<p id="selectMaxDaxID" onclick="selectMaxDax()">↑ Tap here for Max ↑</p>  
-														</td>
-														<td>	
-															<label for="releaseDateID" class="tag">Select stake end:</label>
-															<input id="releaseDateID" type="datetime-local" name="partydate" min="2021-11-01T08:30" max="2038-11-30T16:30" onchange="calculateDays()">
-															<div><span id="numDaysStakeID">0</span> Days</div>
-															<!-- <div id="numDaysStakeID">0</div>Days									 -->
-															
-														</td>
-													</tr>
-													<tr>
-														<div id="stakingErrorMessage" style="background-color : #ffa1a1bd"></div>
-													</tr>
-													<tr>
-														<td>
-																<label class="payout">Projected pay out:  <span id="projectedPayoutID" >0</span></label>
-														</td>
-														<td class="btn-td">
+												</div>
+												<div class="stake_right">
+													<h2 style="color:#5E42A6;">Stake</h2> 
+																<div class="stake_content">
+																	<div class="amount">
+																			<label id = "stakedDAXID" class="tag"> Stake Amount: </label>
+																			<input id="amountToStakeID" type="text" placeholder="--Amount--" onchange="calculateDays()"></input>
+																			<p id="selectMaxDaxID" onclick="selectMaxDax()">↑ Tap here for Max ↑</p>
+																	</div>
+																	<div class="stake_date">
+																			<label for="releaseDateID" class="tag">Select stake end:</label>
+																			<input id="releaseDateID" type="datetime-local" name="partydate" min="2021-11-01T08:30" max="2038-11-30T16:30" onchange="calculateDays()">
+																			<div class="numday"><span id="numDaysStakeID">0</span> Days</div>
+																	</div>
+																</div>
 
+																<div class="stake_actions">
+																		<div id="stakingErrorMessage" style="background-color : #ffa1a1bd"></div>		
+																		<a href="https://pancake.kiemtienonline360.com/#/swap?outputCurrency=0x486c720F1462abD0C41e7919A62d0A3E5affFC6b" id = "buyURLID2" target="_blank" class="button scrolly">Get DAXE &#x27A1</a>
 																		<button onclick="stakeToken()" style="background-color : #5E42A6;border:none!important;" >Stake</button>
+																	</div>
+																		
+
+																						  
 
 
-																<a href="https://pancake.kiemtienonline360.com/#/swap?outputCurrency=0x486c720F1462abD0C41e7919A62d0A3E5affFC6b" id = "buyURLID2" target="_blank" class="button scrolly">Get DAXE &#x27A1</a>
-														</td>
+																						
 
-													</tr>
-													
-												</Table>
-	
 
-											<!-- DAXE STAKED <label id = "stakedDAXID"></label>  -->
-													<Table class=”sortable” id ="DAXBalanceID2">
-															<thead>
-																	<tr>
-																		<th>ID</th>
-																		<th>Initial stake</th>
-																		<th>Start</th>
-																		<th>Release Date</th>
-																		<!-- <th>Initial stake</th> -->
-																		<th>Current Value</th>
-																		<th>Status</th>
-																		<th>Penalty</th>
-																		<th>Payout</th>
-																 </tr>
-																</thead>
-																<tbody>
-																		<tr>
-																				<td>--</td>
-																				<td>--</td>
-																				<!-- <td>--</td> -->
-																				<td>--</td>
-																				<td>--</td>
-																				<td>--</td>
-																				<td>--</td>
-																				<td>--</td>
-																				<td>--</td>
+								
+							
+																		<!-- DAXE STAKED <label id = "stakedDAXID"></label>  -->
+																				<Table class=”sortable” id ="DAXBalanceID2">
+																						<thead>
+																								<tr>
+																									<th>ID</th>
+																									<th>Initial stake</th>
+																									<th>Start</th>
+																									<th>Release Date</th>
+																									<!-- <th>Initial stake</th> -->
+																									<th>Current Value</th>
+																									<th>Status</th>
+																									<th>Penalty</th>
+																									<th>Payout</th>
+																							</tr>
+																							</thead>
+																							<tbody>
+																									<tr>
+																											<td>--</td>
+																											<td>--</td>
+																											<!-- <td>--</td> -->
+																											<td>--</td>
+																											<td>--</td>
+																											<td>--</td>
+																											<td>--</td>
+																											<td>--</td>
+																											<td>--</td>
+							
+																									</tr>																	
+																							</tbody>
+							
+																				</Table>
 
-																		 </tr>																	
-																</tbody>
-
-													</Table>
-												
-											<!-- <input id="sakeDuration" type="text" placeholder="7"> Days -->
-											<!-- <button onclick="connectWallet()">Connect Wallet </button> -->
-										</div>
-										<div>
-											<Table>
-												<tr>
-													''
-														<td><p style="color:white;"><label class="tag">Initial Stake: </label> Initial amount of token staked.</p></td>
-															<td><p style="color:white;"><label class="tag">Current Value: </label> Initial amount + cummulated base interest + cummulated long interest+ bonus from other users early unstake.</p></td>
-												</tr>
-										</Table>
-										</div>
-									</p>
-									<ul class="actions">
-										<!-- <li><a href="generic.html" class="button">Stake</a></li> -->
-									</ul>
-								</div>
+												</div>
 							</div>
 						</section>
 						<section class="stake_pop" id="stake_end">
@@ -272,17 +249,18 @@
 													</div>
 										</div>
 										<div class="coin-border phase date">
+											<div class="coin-card">
+												<img class="coin-image" src="images/icons/chains/POLYGON.svg" alt="">
+												<p class="coin-text">POLYGON</p>
+											</div>
+								</div>
+										<div class="coin-border phase date">
 												<div class="coin-card">
 													<img class="coin-image" src="images/icons/chains/PULSECHAIN.svg" alt="">
 													<p class="coin-text">PULSECHAIN</p>
 												</div>
 									</div>
-																				<div class="coin-border phase date">
-														<div class="coin-card">
-															<img class="coin-image" src="images/icons/chains/POLYGON.svg" alt="">
-															<p class="coin-text">POLYGON</p>
-														</div>
-											</div>
+
 											<div class="coin-border phase date">
 													<div class="coin-card">
 														<img class="coin-image" src="images/icons/chains/SOLANA.svg" alt="">
@@ -328,7 +306,9 @@
 								
 									</div>
 									<div class="daxe_video">
-
+										<iframe width="100%" height="100%" src="https://www.youtube.com/embed/7MCcjhayZEM"
+										 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+										</iframe>
 									</div>
 								</div>
 							</div>
@@ -340,7 +320,7 @@
 									<div class="feature">
 										<img src="images/icons/first_multi_chain_icon.svg" alt="" class="feature-img">
 										<h3 class="feature-title">First Multi-Chain CD</h3>
-										<p class="feature-text">DAXE is the fist multi-chain certificate of deposit launching on BSC, AVAX, PulseChain, Polygon, Solana and more networks.</p>
+										<p class="feature-text">DAXE is the first multi-chain certificate of deposit launching on BSC, AVAX, PulseChain, Polygon, Solana and more networks.</p>
 									</div>
 									<div class="feature">
 										<img src="images/icons/interest_paid_daily_icon.svg" alt="" class="feature-img">
@@ -354,7 +334,7 @@
 									</div>
 									<div class="feature">
 										<img src="images/icons/multiply_holding_icon.svg" alt="" class="feature-img">
-										<h3 class="feature-title">Multiply holdings over chains</h3>
+										<h3 class="feature-title">Multiply holdings over diff chains</h3>
 										<p class="feature-text">Holders on current DAXE chains get airdrops as we deploy to more chains.</p>
 									</div>
 								</div>
@@ -586,7 +566,7 @@
 																											</time>
 																										</header>
 																										<div class="card__content">
-																											<p>BSC+AVAX Snapshot for PULSECHAIN.</p>
+																											<p>BSC+AVAX Snapshot for Polygon.</p>
 																										</div>
 																									</div>
 																									<div class="timeline__card card">
@@ -597,7 +577,7 @@
 																											</time>
 																										</header>
 																										<div class="card__content">
-																												<p>PulseChain Go-Live</p>
+																												<p>Polygon Go-Live</p>
 																											</div>
 																									</div>
 																								</div>
@@ -670,7 +650,7 @@
 					</div>
 					</section>
 
-				<!-- Three -->
+				<!-- Three
 					<section id="three" class="wrapper fade-up">
 						<div class="content">
 														<div class="inner">
@@ -694,10 +674,10 @@
 																			<ul class="icons">
 																				<li><a href="https://t.me/daxetoken" target="_blank" ><img src="images/telegram_icon2.png" width="20%" height="20%"/></a></li>
 																				<li><a   href="https://twitter.com/daxetoken" target="_blank"><img src="images/twitter_icon2.png" width="17%" height="17%"/></a></li>
-																				<!-- <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+																				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 																				<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 																				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-																				<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li> -->
+																				<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 																			</ul>
 																		</li>
 																	</ul>
@@ -705,29 +685,83 @@
 															</div>
 														</div>
 						</div>
-					</section>
-				</main>	
-			</div>
-		
-		<!-- Footer -->
+					</section> -->
+				</main>
+				<!-- Footer -->
 			<footer id="footer" class="wrapper">
 				<div class="inner">
-					<ul class="menu">
-						<li>&copy; DaxeToken. All rights reserved.</li>
-					</ul>
+					<div class="team">
+						<div class="team-head">
+							<hr>
+							<h2>Team</h2>
+							<hr>
+						</div>
+							<div class="team-member">
+											<img src="images/daxe_team_michel.png" alt="Michel_Profile">
+											<h4>Michel Aka<span>.</span></h4>
+											<p class="title">Founder</p>
+											<ul class="links">
+												<li>
+													<a href="https://ca.linkedin.com/in/michel-aka" class="icon brands fa-linkedin"></a>
+												</li>
+												<li>
+													<a href="https://www.youtube.com/channel/UCi7_WxajoowBl4_9P0DhzzA" class="icon brands fa-youtube"></a>
+												</li>
+											</ul>
+							</div>
+							<div class="team-member">
+												<img src="images/daxe_team_jagger.png" alt="Jagger_Profile">
+												<h4>Jagger Badwin<span>.</span></h4>
+												<p class="title">CMO</p>
+												<ul class="links">
+													<li>
+														<a href="https://www.linkedin.com/in/jagger-babwin-5a6a4522/" class="icon brands fa-linkedin"></a>
+													</li>
+												</ul>
+								</div>
+								<div class="team-member">
+												<img src="images/daxe_team_khalid.png" alt="Khalid_Profile">
+												<h4>Khalid Ouhdane<span>.</span></h4>
+												<p class="title">UI & WEB DEV</p>
+												<ul class="links">
+													<li>
+														<a href="https://khalidouhdane.com/" class="icon brands fa-link"></a>
+													</li>
+													<li>
+														<a href="https://www.linkedin.com/in/khalidouhdane/" class="icon brands fa-linkedin"></a>
+													</li>
+													<li>
+														<a href="https://www.instagram.com/khalid.ouhdane/" class="icon brands fa-instagram"></a>
+													</li>
+												</ul>
+									</div>
+					</div>
+					<div class="daxe">
+						<img src="images/Daxe_Logo.svg" alt="Daxe Logo">
+						<ul class="icons">
+								<li><a href="hhttps://t.me/daxetoken" class="icon brands fa-telegram"></a></li>
+							<li><a href="https://www.facebook.com/DaxeTokenPage/" class="icon brands fa-facebook"></a></li>
+							<li><a href="https://twitter.com/daxetoken/" class="icon brands fa-twitter"></a></li>
+							<li><a href="https://www.reddit.com/r/DaxeToken/" class="icon brands fa-reddit"></a></li>
+							<li><a href="https://www.instagram.com/daxetoken/" class="icon brands fa-instagram"></a></li>
+						</ul>
+					</div>
 				</div>
 			</footer>
+			</div>
+		
+		
 
 		<!-- Scripts -->
-			<script src="dist/daxeScript.js?v=2.11" type="application/javascript"></script>
-			<script src="dist/countdown.js?v=1.11" type="application/javascript"></script>
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="dist/daxeScript.js?v=12.19" type="application/javascript"></script>
+			<script src="dist/countdown.js?v=12.19" type="application/javascript"></script>
+			<script src="assets/js/jquery.min.js?v=12.19"></script>
+			<script src="assets/js/jquery.scrollex.min.js?v=12.19"></script>
+			<script src="assets/js/jquery.scrolly.min.js?v=12.19"></script>
+			<script src="assets/js/browser.min.js?v=12.19"></script>
+			<script src="assets/js/breakpoints.min.js?v=12.19"></script>
+			<script src="assets/js/util.js?v=12.19"></script>
+			<script src="assets/js/main.js?v=12.19"></script>
 
 	</body>
 </html>

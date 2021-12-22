@@ -2412,11 +2412,11 @@ textarea {
   -webkit-appearance: none;
   -ms-appearance: none;
   appearance: none;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.25em;
+  background: transparent;
+  border-radius: 100px;
   border: none;
-  border: solid 1px rgba(255, 255, 255, 0.15);
-  color: inherit;
+  border: solid 1px #5e42a6;
+  color: #5e42a6;
   display: block;
   outline: 0;
   padding: 0 1em;
@@ -2439,8 +2439,8 @@ input[type="email"]:focus,
 input[type="tel"]:focus,
 select:focus,
 textarea:focus {
-  border-color: #ffffff;
-  box-shadow: 0 0 0 1px #ffffff;
+  border-color: #5e42a6;
+  box-shadow: 0 0 0 1px #5e42a6;
 }
 
 select {
@@ -2562,22 +2562,22 @@ input[type="radio"] + label:before {
 } */
 
 ::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.35) !important;
+  color: #5e42a6 !important;
   opacity: 1;
 }
 
 :-moz-placeholder {
-  color: rgba(255, 255, 255, 0.35) !important;
+  color: #5e42a6 !important;
   opacity: 1;
 }
 
 ::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.35) !important;
+  color: #5e42a6 !important;
   opacity: 1;
 }
 
 :-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.35) !important;
+  color: #5e42a6 !important;
   opacity: 1;
 }
 
@@ -3127,10 +3127,11 @@ section.stake_pop {
   justify-content: center;
   width: 100%;
 }
-.spotlights > section.stake_pop > .content {
+.stake_container {
+  display: flex;
   justify-content: flex-start;
   background-color: white;
-  overflow-y: scroll;
+  overflow: visible;
   width: 80%;
   height: 90%;
   position: absolute;
@@ -3138,6 +3139,108 @@ section.stake_pop {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
+}
+.stake_left {
+  background-color: #5e42a6;
+  border-radius: 20px;
+  padding: 2%;
+  transform: scaleY(1.003);
+  width: 25%;
+}
+.stake_right {
+  width: 75%;
+  padding: 2%;
+}
+ul.stake_cord {
+  margin: 3em 0;
+}
+ul.stake_cord span {
+  background: #312450;
+  padding: 0.8em 1.5em;
+  border-radius: 100px;
+  font-size: 0.7em;
+  text-transform: uppercase;
+}
+ul.stake_cord label {
+  display: block;
+  margin: 1em 1em;
+  font-weight: 700;
+}
+.stake_content {
+  display: flex;
+}
+.stake_content div {
+  text-align: center;
+}
+.stake_content label {
+  color: #312450;
+  font-weight: 900;
+}
+
+.stake_content input {
+  font-size: 0.9em;
+  font-weight: 500;
+  height: 4em;
+  padding: 0 2em;
+  text-transform: uppercase;
+}
+.amount {
+  flex-grow: 1;
+  padding: 1%;
+}
+.stake_date {
+  flex-grow: 1;
+  padding: 1%;
+}
+#selectMaxDaxID,
+.numday {
+  width: 60%;
+  text-align: center;
+  background-color: #312450;
+  color: white;
+  padding: 5px;
+  border-radius: 100px;
+  cursor: pointer;
+  margin: 1em auto;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  padding: 0.7em 0;
+}
+.stake_actions {
+  text-align: right;
+  margin: 2em 0;
+}
+a#buyURLID2 {
+  color: #5e42a6 !important;
+  margin-right: 1em;
+}
+.payout {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8em;
+}
+.btn-td {
+  padding: 0;
+}
+button#refreshButtonID {
+  width: 100%;
+  border: none !important;
+  color: #5e42a6 !important;
+  background-color: white;
+}
+
+/* staking table */
+table#DAXBalanceID2 {
+  background-color: #5e42a6;
+  border-radius: 20px;
+}
+table#DAXBalanceID2 th {
+  color: #ffffff;
+  font-size: 0.6em;
+  font-weight: 700;
+  padding: 1em;
+  text-align: left;
+  text-transform: uppercase;
 }
 
 .spotlights > section > .content > .inner {
@@ -3149,7 +3252,7 @@ section.stake_pop {
   -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
   -ms-transition: opacity 1s ease, -ms-transform 1s ease;
   transition: opacity 1s ease, transform 1s ease;
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 .spotlights > section.inactive > .content > .inner,
@@ -3276,7 +3379,7 @@ table.alt tfoot {
 }
 
 .wrapper > .inner {
-  padding: 0em 5em 3em 5em;
+  padding: 3em 5em 3em 5em;
   width: 100%;
 }
 
@@ -3852,4 +3955,113 @@ body.is-preload #sidebar nav ul li {
   nav {
     padding: 0 2em !important;
   }
+}
+
+/* FOOTER DESIGN */
+
+footer#footer {
+  background: #312450;
+  height: 500px;
+}
+#footer .inner {
+  display: flex;
+  height: inherit;
+}
+.team,
+.daxe {
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+
+.team {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.team-member {
+  width: 33%;
+  text-align: center;
+}
+.daxe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.team img {
+  width: 60%;
+}
+.team h4 {
+  font-size: 1.3em;
+  margin-bottom: 0.2em;
+}
+
+.team h4 span {
+  color: #9f7eed;
+}
+p.title {
+  margin-bottom: 0;
+  color: #9f7eed;
+  text-transform: uppercase;
+  font-size: 0.7em;
+}
+ul.links {
+  display: flex;
+  justify-content: center;
+}
+.daxe img {
+  height: 3em;
+  margin-bottom: 2em;
+}
+.daxe .icon.brands:before {
+  font-size: 1.6em;
+  color: #9f7eed;
+}
+
+ul.icons li {
+  padding: 0 0.7em 0 0.7em;
+}
+ul.links li {
+  padding: 0 0.3em 0 0.3em;
+}
+.team-head {
+  margin: 0 !important;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: -1em;
+}
+
+@media screen and (max-width: 400px) {
+  #footer .inner {
+    flex-direction: column;
+  }
+  .team,
+  .daxe {
+    width: 100%;
+    height: 50%;
+  }
+  .team {
+    align-items: flex-start;
+  }
+  .team-head {
+    top: -2em;
+  }
+}
+.team-head hr {
+  width: 33%;
+  border: 1px solid #9f7eed;
+  margin: 0 !important;
+  background-color: #9f7eed;
+  height: 0px;
+}
+.team-head h2 {
+  width: 33%;
+  text-align: center;
+  margin: 0 !important;
+  text-transform: uppercase;
+  font-size: 1.5em;
 }
