@@ -260,7 +260,6 @@ a {
   -webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
   -ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
   transition: color 0.2s ease, border-bottom-color 0.2s ease;
-  border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
   color: inherit;
   text-decoration: none;
 }
@@ -2415,8 +2414,8 @@ textarea {
   background: transparent;
   border-radius: 100px;
   border: none;
-  border: solid 1px #5e42a6;
-  color: #5e42a6;
+  border: solid 1px white;
+  color: white;
   display: block;
   outline: 0;
   padding: 0 1em;
@@ -2439,8 +2438,8 @@ input[type="email"]:focus,
 input[type="tel"]:focus,
 select:focus,
 textarea:focus {
-  border-color: #5e42a6;
-  box-shadow: 0 0 0 1px #5e42a6;
+  border-color: #9f7eed;
+  box-shadow: 0 0 0 1px #9f7eed;
 }
 
 select {
@@ -2562,23 +2561,23 @@ input[type="radio"] + label:before {
 } */
 
 ::-webkit-input-placeholder {
-  color: #5e42a6 !important;
-  opacity: 1;
+  color: white !important;
+  opacity: 0.7;
 }
 
 :-moz-placeholder {
-  color: #5e42a6 !important;
-  opacity: 1;
+  color: white !important;
+  opacity: 0.7;
 }
 
 ::-moz-placeholder {
-  color: #5e42a6 !important;
-  opacity: 1;
+  color: white !important;
+  opacity: 0.7;
 }
 
 :-ms-input-placeholder {
-  color: #5e42a6 !important;
-  opacity: 1;
+  color: white !important;
+  opacity: 0.7;
 }
 
 /* Icon */
@@ -3095,25 +3094,6 @@ body.is-ie .spotlights > section {
   min-height: 0;
 }
 
-section.stake_pop {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 999999;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-.stake_start {
-  display: none !important;
-}
-.stake_start:target {
-  display: flex !important;
-}
-#stake_end {
-  visibility: hidden;
-}
-
 .spotlights > section > .content {
   padding: 4em 5em 4em 5em;
   display: -moz-flex;
@@ -3130,15 +3110,13 @@ section.stake_pop {
 .stake_container {
   display: flex;
   justify-content: flex-start;
-  background-color: white;
-  overflow: visible;
-  width: 80%;
-  height: 90%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 20px;
+}
+h2.stake-head {
+  text-align: center;
+  margin-bottom: 2em;
+}
+h2.stake-head span {
+  color: #9f7eed;
 }
 .stake_left {
   background-color: #5e42a6;
@@ -3149,7 +3127,7 @@ section.stake_pop {
 }
 .stake_right {
   width: 75%;
-  padding: 2%;
+  padding-left: 2%;
 }
 ul.stake_cord {
   margin: 3em 0;
@@ -3173,7 +3151,7 @@ ul.stake_cord label {
   text-align: center;
 }
 .stake_content label {
-  color: #312450;
+  color: white;
   font-weight: 900;
 }
 
@@ -3183,6 +3161,9 @@ ul.stake_cord label {
   height: 4em;
   padding: 0 2em;
   text-transform: uppercase;
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 .amount {
   flex-grow: 1;
@@ -3211,8 +3192,9 @@ ul.stake_cord label {
   margin: 2em 0;
 }
 a#buyURLID2 {
-  color: #5e42a6 !important;
+  color: white !important;
   margin-right: 1em;
+  border: none !important;
 }
 .payout {
   text-transform: uppercase;
@@ -3229,6 +3211,13 @@ button#refreshButtonID {
   background-color: white;
 }
 
+/* end staking */
+.stake_end .stake_content {
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 100%;
+}
 /* staking table */
 table#DAXBalanceID2 {
   background-color: #5e42a6;
@@ -3238,10 +3227,39 @@ table#DAXBalanceID2 th {
   color: #ffffff;
   font-size: 0.6em;
   font-weight: 700;
-  padding: 1em;
+  padding: 1em 0.5em
   text-align: left;
   text-transform: uppercase;
 }
+
+/* STAKING RESPONSIVITY */
+
+@media (max-width: 1100px) {
+  .stake_container {
+    flex-direction: column;
+  }
+  .stake_left,
+  .stake_right {
+    width: 100%;
+  }
+  ul.stake_cord {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .stake_right {
+    margin-top: 5%;
+  }
+  .stake_end .stake_right {
+    height: 13em;
+  }
+}
+
+@media (max-width: 730px) {
+  .stake_content {
+    flex-direction: column;
+  }
+}
+/* STAKING RESPONSIVITY END */
 
 .spotlights > section > .content > .inner {
   -moz-transform: translateX(0) translateY(0);
@@ -3327,7 +3345,9 @@ table tbody tr:nth-child(2n + 1) {
 }
 
 table td {
-  padding: 1.75em 1em;
+  padding: 1.75em 0.5em;
+  font-size: 0.8em !important;
+  text-align: center;
 }
 
 table th {
@@ -3676,7 +3696,6 @@ body {
   padding: 0;
   cursor: default;
   z-index: 99999;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -3709,6 +3728,7 @@ body.is-ie #sidebar > .inner {
   padding: 0;
   display: flex;
   align-items: center;
+  z-index: 999999999999999;
 }
 
 #sidebar nav > ul > li {
@@ -3724,6 +3744,7 @@ body.is-ie #sidebar > .inner {
   padding: 0;
   position: relative;
   margin-left: 2em;
+  position:relative;
 }
 
 #sidebar nav > ul > li:nth-child(1) {
@@ -3865,8 +3886,29 @@ body.is-ie #sidebar > .inner {
   -ms-transition-delay: 4.25s;
   transition-delay: 4.25s;
 }
+/* submenus */
 
-#sidebar nav a {
+#sidebar nav ul ul {
+  position:absolute;
+  top: 100%;
+  left:0;
+  opacity:0;
+  visibility:hidden;
+}
+#sidebar nav ul li:hover > ul{
+  opacity:1;
+  visibility:visible;
+}
+#sidebar nav ul ul li{
+  position:relative;
+}
+#sidebar nav ul a.show , #sidebar nav ul li input {
+  display: none;
+}
+
+/* submenus end */
+
+#sidebar nav ul a {
   -moz-transition: color 0.2s ease;
   -webkit-transition: color 0.2s ease;
   -ms-transition: color 0.2s ease;
@@ -3885,7 +3927,7 @@ body.is-ie #sidebar > .inner {
   text-transform: uppercase;
 }
 
-#sidebar nav a:after {
+#sidebar nav ul a:after {
   border-radius: 0.2em;
   bottom: 0;
   content: "";
@@ -3895,7 +3937,7 @@ body.is-ie #sidebar > .inner {
   width: 100%;
 }
 
-#sidebar nav a:after {
+#sidebar nav ul a:after {
   background-image: -moz-linear-gradient(to right, white, #9f7eed);
   background-image: -webkit-linear-gradient(to right, white, #9f7eed);
   background-image: -ms-linear-gradient(to right, white, #9f7eed);
@@ -3907,18 +3949,18 @@ body.is-ie #sidebar > .inner {
   max-width: 0;
 }
 
-#sidebar nav a:hover {
+#sidebar nav ul a:hover {
   color: #9f7eed;
 }
-#sidebar nav a:hover::after {
+#sidebar nav ul a:hover::after {
   max-width: 100%;
 }
 
-#sidebar nav a.active {
+#sidebar nav ul a.active {
   color: #9f7eed;
 }
 
-#sidebar nav a.active:after {
+#sidebar nav ul a.active:after {
   max-width: 100%;
 }
 

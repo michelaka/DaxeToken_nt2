@@ -155,7 +155,7 @@ p.p-heading {
   content: "live";
 }
 .phase:nth-of-type(3)::before {
-  content: "sacrifice";
+  content: "Stake Snapshot";
 }
 .phase:nth-of-type(4)::before {
   content: "";
@@ -436,5 +436,31 @@ nav {
   }
   #check:checked ~ ul {
     left: 0;
+  }
+  .show,
+  #sidebar nav ul li input {
+    display: none;
+  }
+  #sidebar nav ul ul li {
+    display: block;
+  }
+  #sidebar nav ul ul {
+    position: static;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    text-align: center;
+  }
+  #sidebar nav ul a.show {
+    display: block;
+  }
+  .show + a {
+    display: none !important;
+  }
+  [id^="sub"]:checked + ul {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }

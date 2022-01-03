@@ -438,7 +438,8 @@ async function getTokenBalance(ABI, tokenAddress, walletAddress) {
 }
 
 function showBalance(message) {
-  document.getElementById("DAXBalanceID").innerHTML = "Balance: " + message;
+  document.getElementById("DAXBalanceID").innerHTML =
+    " " + message.toLocaleString();
 }
 
 function showStakedBalance(message) {
@@ -532,7 +533,10 @@ function showStakedBalances(stakedBalances) {
     cell1.innerHTML = "" + stakedBalances[i][0];
     cell2 = row.insertCell(1);
     cell2.innerHTML =
-      "" + Math.floor(ethers.utils.formatEther(stakedBalances[i][1]));
+      "" +
+      Math.floor(
+        ethers.utils.formatEther(stakedBalances[i][1])
+      ).toLocaleString();
     cell3 = row.insertCell(2);
     cell3.innerHTML = "" + formatDate(startDate);
     cell4 = row.insertCell(3);
@@ -554,7 +558,7 @@ function showStakedBalances(stakedBalances) {
             Math.floor(ethers.utils.formatEther(stakedBalances[i][1])),
             daysStaked
           )
-      ) +
+      ).toLocaleString() +
       "</b>";
 
     status = getStakeStatus(
@@ -571,9 +575,9 @@ function showStakedBalances(stakedBalances) {
         Math.floor(
           displayProjectedPayout(
             Math.floor(ethers.utils.formatEther(stakedBalances[i][1])),
-            daysStaked
+            stakeDuration
           ) + Math.floor(ethers.utils.formatEther(stakedBalances[i][4]))
-        );
+        ).toLocaleString();
 
     cell7 = row.insertCell(7);
     cell7.innerHTML =
@@ -582,11 +586,17 @@ function showStakedBalances(stakedBalances) {
 
     cell8 = row.insertCell(8);
     cell8.innerHTML =
-      "" + Math.floor(ethers.utils.formatEther(stakedBalances[i][5]));
+      "" +
+      Math.floor(
+        ethers.utils.formatEther(stakedBalances[i][5])
+      ).toLocaleString();
 
     cell9 = row.insertCell(9);
     cell9.innerHTML =
-      "" + Math.floor(ethers.utils.formatEther(stakedBalances[i][6])); // printMe =
+      "" +
+      Math.floor(
+        ethers.utils.formatEther(stakedBalances[i][6])
+      ).toLocaleString(); // printMe =
     //   printMe +
     //   "[ ID " +
     //   stakedBalances[i][0] +
