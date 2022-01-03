@@ -126,127 +126,194 @@
                   </section>
         </header>
 
-						<main class="wrapper spotlights">
-							<section class="stake stake_start">
-									
-									<div class="content">
-											<div class="inner">
-													<h2 class="stake-head">Stake<span>.</span></h2>
-														<div class="stake_container">
-													
-																			<div class="stake_left">
-							
-																							<button onclick="connectWallet()" id="refreshButtonID">Connect/Refresh</button>
-																							<ul class="stake_cord">
-																								<li>
-																										<span>Wallet Address</span> <label id ="addressID">Not Connected</label>
-																								</li>
-																								<li>
-																										<span>DAXE Balance</span><label id = "DAXBalanceID"> ... DAXE </label>
-																								</li>
-																								<li>
-																										<span>Projected pay out: </span><label id="projectedPayoutID" >0</label>
-																								</li>
-																							</ul>
-							
-																			</div>
-																			<div class="stake_right"> 
-																							<div class="stake_content">
-																								<div class="amount">
-																										<label id = "stakedDAXID" class="tag"> Stake Amount: </label>
-																										<input id="amountToStakeID" type="text" placeholder="Amount" onchange="calculateDays()"></input>
-																										<p id="selectMaxDaxID" onclick="selectMaxDax()">↑ Tap here for Max ↑</p>
-																								</div>
-																								<div class="stake_date">
-																										<label for="releaseDateID" class="tag">Select stake end:</label>
-																										<input id="releaseDateID" type="datetime-local" name="partydate" min="2021-11-01T08:30" max="2038-11-30T16:30" onchange="calculateDays()">
-																										<div class="numday"><span id="numDaysStakeID">0</span> Days</div>
-																								</div>
-																			</div>
-							
-																							<div class="stake_actions">
-																									<div id="stakingErrorMessage" style="background-color : #ffa1a1bd"></div>		
-																									<a href="https://pancake.kiemtienonline360.com/#/swap?outputCurrency=0x486c720F1462abD0C41e7919A62d0A3E5affFC6b" id = "buyURLID2" target="_blank" class="button scrolly">Get DAXE &#x27A1</a>
-																									<button onclick="stakeToken()" style="background-color : #9F7EED;border:none!important;" >Stake</button>
-																								</div>
-																									
-							
-																														
-							
-							
-																													
-							
-							
-															
-														
-																									<!-- DAXE STAKED <label id = "stakedDAXID"></label>  -->
-																											<Table class=”sortable” id ="DAXBalanceID2">
-																													<thead>
-																															<tr>
-																																<th>ID</th>
-																																<th>Initial stake</th>
-																																<th>Start</th>
-																																<th>Release Date</th>
-																																<th>Progress</th>
-																																<th title="Current Value = Initial DAXE Staked + Interest to-date + Estimated payout from penalties">Current Value</th>
-																																<th title="Projected Value = Initial DAXE staked + Total Interest paid at end of stake + Estimated payout from penalties">Projected Value</th>
-																																<th title="Status = Active / Matured / Cancelled ">Status</th>
-																																<th title="Penalty = Amount deducted from an early unstake">Penalty</th>
-																																<th title="Payout = Amount paid out to staking wallet once stake is ended">Payout</th>
-																														</tr>
-																														</thead>
-																														<tbody>
-																																<tr>
-																																		<td>-</td>
-																																		<td>-</td>
-																																		<td>-</td>
-																																		<td>-</td>
-																																		<td>-</td>
-																																		<td>-</td>
-																																		<td>-</td>
-																																		<td>-</td>
-																																		<td>-</td>
-																																		<td>-</td>
-														
-																																</tr>																	
-																														</tbody>
-														
-																											</Table>
-							
-																			</div>
-														</div>
-											</div>
-									</div>
-							</section>
-							<section class="stake stake_end">
-									
-										<div class="content">
-												<div class="inner">
-														<h2 class="stake-head">End Stake<span>.</span></h2>
-															<div class="stake_container">
-														
-																				<div class="stake_left">
-								
-																								<ul class="stake_cord">
-																									<li>
-																											<span>Staked DAXE</span> <label id = "DAXBalanceID"> ... DAXE </label>
-																									</li>
+        <main class="wrapper spotlights">
 
-																								</ul>
-								
-																				</div>
-																				<div class="stake_right"> 
-																					<div class="stake_content">
-																						<label>Enter Stake ID:</label>
-																						<input id="stakeID" type="text" placeholder="--Enter Stake ID-- !!!Unstaking before stake maturity will result in high penalties!!!"></input>
-																						<button onclick="unstakeToken()">End Stake </button> 
-																					</div>
-																				</div>
-															</div>
-												</div>
-										</div>
-							</section>
-				    </main>	
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Main -->
+    <section id="main" class="wrapper">
+      <div class="inner">
+
+          <section class="hero">
+              <div>
+                <h1 class="major" >aDAXE Token Allocation (DAXE on AVAX)</h1>
+              </div>
+              <div>
+                <img src="images/Sac-Main.png" alt="">
+              </div>
+            </section>
+
+        <p class="sac-p">
+          <span class="sac-number">1</span>
+            Token Allocation
+          <span class="secondary-sac">
+            <br/>Staker Score = (Amount Staked) * (Duration)
+            <br/> before snapshot for aDAXE sacrifice
+          </span>
+        </p>
+
+        <table class="sac-net">
+          <tr>
+            <th>Set</th>
+            <th>Token Amount </th>            
+          </tr>
+          <tr>
+            <td>Initial LP</td>
+            <td>
+                200,000,000,000
+            </td>
+          </tr>
+          <tr>
+            <td>Sacrifice set</td>
+            <td>
+                5,000,000,000
+            </td>
+          </tr>
+
+          <tr>
+            <td>Current DAXE Stakers<BR/>Based on staker score*</td>
+            <td>
+                50,000,000,000
+            </td>
+          </tr>
+
+          <tr>
+            <td>Current DAXE Holders</td>
+            <td>
+                5,000,000,000
+            </td>
+          </tr>
+
+
+          <tr>
+              <td>Dev Funds</td>
+              <td>
+                  10,000,000,000
+              </td>
+          </tr>
+
+          <tr>
+              <td>Airdrops and Promo</td>
+              <td>
+                  2,000,000,000
+              </td>
+          </tr>
+
+          <tr>
+              <td>HEX OA</td>
+              <td>
+                  2,000,000,000
+              </td>
+          </tr>
+
+          <tr>
+              <td>Origin Address</td>
+              <td>
+                  Controlling interest (i.e. > 50%)
+              </td>
+          </tr>
+        </table>
+        
+        
+        <p class="sac-p">
+            <span class="sac-number">2</span>
+              Sacrifice set Release Schedule<br/>
+            <span class="secondary-sac">
+              All unreleased tokens are staked
+            </span>
+          </p>
+
+          <table class="sac-net">
+          <tr>
+              <th>Release date</th>
+              <th>Allocation </th>            
+          </tr>
+
+            <tr>
+              <td>Dec 12 </td>
+              <td>1/10 of allocation</td>            
+            </tr>
+            <tr>
+              <td>Jan 15 </th>
+              <td>1/10 of allocation</td>  
+            </tr>
+            <tr>
+              <td>next 8 months</td>
+              <td>
+                  1/10 of allocation
+              </td>
+            </tr>
+
+
+          </table>
+          
+        
+
+
+          <p class="sac-p">
+              <span class="sac-number">3</span>
+                Dev funds set Release Schedule
+              <span class="secondary-sac">
+                
+              </span>
+            </p>
+  
+            <table class="sac-net">
+            <tr>
+                <th>Release date</th>
+                <th>Allocation </th>            
+            </tr>
+
+              <tr>
+                <td>April 9 </td>
+                <td>1/10 of allocation</td>            
+              </tr>
+              <tr>
+                <td>May 6 </th>
+                <td>1/10 of allocation</td>  
+              </tr>
+              <tr>
+                <td>June 4</td>
+                <td>
+                    2/10 of allocation
+                </td>
+              </tr>
+  
+  
+              <tr>
+                  <td>July 1</td>
+                  <td>
+                      2/10 of allocation
+                  </td>
+              </tr>
+  
+              <tr>
+                  <td>August 29</td>
+                  <td>
+                      2/10 of allocation
+                  </td>
+              </tr>
+  
+              <tr>
+                  <td>Sept 27</td>
+                  <td>
+                      2/10 of allocation
+                  </td>
+              </tr>
+            </table>
+
+
+      </div>
+    </section>
+  </div>   
+  
+  
+
+       
+       
+         
+        </main>	
+
 			</div>
 			<span hidden>
 				<a href="https://pancakeswap.finance/swap?outputCurrency=0x5106f787E8778a86D1928ed5ad0B0215dBFA00b8" target="_blank" id="buyURLID" class="button scrolly">Buy DAXE</a>	
