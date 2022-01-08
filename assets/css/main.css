@@ -3501,8 +3501,14 @@ body.is-ie .wrapper.fullscreen {
   align-items: center;
   flex-direction: row;
 }
-#intro > .inner > div {
+#intro > .inner > div.hero-text {
   width: 50%;
+}
+#intro > .inner > div.hero-figure {
+  width: 50%;
+}
+div.hero-figure img {
+  width: 110%;
 }
 
 .wrapper.fade-up.inactive > .inner,
@@ -3989,7 +3995,7 @@ body.is-preload #sidebar nav ul li {
     align-items: stretch;
   }
   #intro > .inner > div {
-    width: 100%;
+    width: 100%!important;
   }
   div.hero-figure img {
     width: 100% !important;

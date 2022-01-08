@@ -56,7 +56,7 @@ function initializeNetwork() {
     networkName = "BSC TESTNET";
     RPC_URL = "https://data-seed-prebsc-1-s1.binance.org:8545";
     baseDexURL = "https://pancake.kiemtienonline360.com/#/swap?outputCurrency=";
-    contractAddress = "0xF7379af8ebfe5524375c639Ee57DF841FEa62bEc";
+    contractAddress = "0xF44Aa82Ae2eeEA2e67a7167Ad69BA23857fDA7ea";
   } else if (NETWORK_ID == 111) {
     networkName = "VLX TestNet";
     RPC_URL = "https://evmexplorer.testnet.velas.com/rpc";
@@ -167,6 +167,12 @@ function calculateDays() {
     parseFloat($("#amountToStakeID").val()),
     parseInt(numDays)
   );
+  // amountToStake = interestAtDayN2(
+  //   parseInt(numDays),
+  //   parseInt(numDays) + 1,
+  //   parseFloat($("#amountToStakeID").val())
+  // );
+
   $("#projectedPayoutID").html(Math.floor(amountToStake));
 
   $("#numDaysStakeID").html(Math.floor(numDays));
@@ -186,6 +192,50 @@ function computeTotalInterest(amountToStake, numDays) {
   return amountToStake;
 }
 
+function interestAtDayN2(daysServed, stakeDuration, principleAtDayN) {
+  // if ( daysServed > lastDayOfStake) return 0;
+
+  cumulativePrinciple = principleAtDayN;
+  initialPrincipal = principleAtDayN + 0;
+
+  baseInterest = principleAtDayN * 2000000;
+  baseInterest = baseInterest / 3652500000;
+  longStakeInterest = 0;
+  allInterest = 0;
+
+  for (i = 0; i < daysServed && i < stakeDuration; i++) {
+    // uint baseInterest = computeBaseInterestForDayN(initialPrincipal);
+    // longStakeInterest = computeLongStateDialyBonus(i, initialPrincipal);
+    baseInterest = cumulativePrinciple * 2000000;
+    baseInterest = baseInterest / 3652500000;
+
+    //exponential base interest
+    // longStakeInterest = i * i * 10000;
+    // longStakeInterest = longStakeInterest / 30858025;
+    // longStakeInterest = longStakeInterest * cumulativePrinciple * 0.5;
+    // longStakeInterest = longStakeInterest / 3650000;
+
+    //Linear base interest 0-7.5 years rising over time from 0-100%
+    // And Maxes out at 100% after 7.5 years (2777 days)
+    longStakeInterest =
+      (Math.min(2777.5, daysServed) / 2777.5) * cumulativePrinciple * 0.1;
+    longStakeInterest = longStakeInterest / 365;
+
+    allInterest = baseInterest + longStakeInterest;
+    console.log(
+      "Base Interest ",
+      baseInterest,
+      " long stake interest ",
+      longStakeInterest
+    );
+
+    cumulativePrinciple = cumulativePrinciple + allInterest;
+  }
+
+  // uint newPrinciple = sum(principleAtDayN, interesAccruedtToday);
+  return cumulativePrinciple;
+}
+
 function displayProjectedPayout(amountToStake, numDays) {
   cumulativeInterest = 0;
   let baseInterest = 0.0;
@@ -194,6 +244,7 @@ function displayProjectedPayout(amountToStake, numDays) {
   for (i = 0; i < numDays; i++) {
     baseInterest = (0.2 * startingAmount) / 365;
     longStayInterest = getLongStayInterestAtDayN(startingAmount, i);
+    console.log("long stay at day ", i, " = ", longStayInterest);
     amountToStake = amountToStake + baseInterest + longStayInterest;
 
     // console.log(
@@ -218,7 +269,6 @@ function getLongStayInterestAtDayN(amountToStake, daysStaked) {
   interestAtDayN = interestAtDayN / 365;
 
   // console.log("long interest at day N ", interestAtDayN);
-
   return amountToStake * interestAtDayN;
 }
 
