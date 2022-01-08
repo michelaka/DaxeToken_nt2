@@ -56,7 +56,7 @@ function initializeNetwork() {
     networkName = "BSC TESTNET";
     RPC_URL = "https://data-seed-prebsc-1-s1.binance.org:8545";
     baseDexURL = "https://pancake.kiemtienonline360.com/#/swap?outputCurrency=";
-    contractAddress = "0xF7379af8ebfe5524375c639Ee57DF841FEa62bEc";
+    contractAddress = "0xF44Aa82Ae2eeEA2e67a7167Ad69BA23857fDA7ea";
   } else if (NETWORK_ID == 111) {
     networkName = "VLX TestNet";
     RPC_URL = "https://evmexplorer.testnet.velas.com/rpc";
