@@ -116,7 +116,9 @@ p.p-heading {
   border-radius: 20px;
   position: relative;
 }
-
+#chain-list .coin-border:nth-of-type(4) {
+  width: 45%;
+}
 /* CHAINS CONTROL */
 /* DATE CORE */
 .date::after {
@@ -155,7 +157,7 @@ p.p-heading {
   content: "live";
 }
 .phase:nth-of-type(3)::before {
-  content: "Stake Snapshot";
+  content: "Live";
 }
 .phase:nth-of-type(4)::before {
   content: "";
@@ -203,7 +205,10 @@ p.p-heading {
   margin: 0;
 }
 #chain-list .coin-image {
-  width: 50%;
+  height: 90px;
+}
+#chain-list .coin-border:nth-of-type(4) .coin-image {
+  height: 130px !important;
 }
 .daxe_stats .inner {
   display: flex;

@@ -56,7 +56,7 @@ function initializeNetwork() {
     networkName = "BSC TESTNET";
     RPC_URL = "https://data-seed-prebsc-1-s1.binance.org:8545";
     baseDexURL = "https://pancake.kiemtienonline360.com/#/swap?outputCurrency=";
-    contractAddress = "0xF44Aa82Ae2eeEA2e67a7167Ad69BA23857fDA7ea";
+    contractAddress = "0xf43834BED32a73BCe290b7936a9A71BFCC79E1c2";
   } else if (NETWORK_ID == 111) {
     networkName = "VLX TestNet";
     RPC_URL = "https://evmexplorer.testnet.velas.com/rpc";
@@ -64,12 +64,13 @@ function initializeNetwork() {
   } else if (NETWORK_ID == 80001) {
     networkName = "Polygon TestNet";
     RPC_URL = "https://rpc-mumbai.matic.today";
-    baseDexURL = "https://app.sushi.com/swap?outputCurrency=";
+    baseDexURL = "https://quickswap.exchange/#/swap?outputCurrency=";
+    contractAddress = "0x5106f787E8778a86D1928ed5ad0B0215dBFA00b8";
   } else if (NETWORK_ID == 137) {
-    networkName = "Polygon TestNet";
+    networkName = "POLYGON/MATIC";
     RPC_URL = "https://polygon-rpc.com/";
     baseDexURL = "https://quickswap.exchange/#/swap?outputCurrency=";
-    contractAddress = "0xB441473B4d0280797B6390edE531A1d0679F15c9"; // Polygon test net address
+    contractAddress = "0x4b47ea2555D2867F6dfF9EFC14927d48a2e3106a"; // Polygon test net address
   } else if (NETWORK_ID == 43113) {
     networkName = "AVAX TESTNET";
     RPC_URL = "https://api.avax-test.network/ext/bc/C/rpc";
@@ -207,18 +208,12 @@ function interestAtDayN2(daysServed, stakeDuration, principleAtDayN) {
     // uint baseInterest = computeBaseInterestForDayN(initialPrincipal);
     // longStakeInterest = computeLongStateDialyBonus(i, initialPrincipal);
     baseInterest = cumulativePrinciple * 2000000;
-    baseInterest = baseInterest / 3652500000;
-
-    //exponential base interest
-    // longStakeInterest = i * i * 10000;
-    // longStakeInterest = longStakeInterest / 30858025;
-    // longStakeInterest = longStakeInterest * cumulativePrinciple * 0.5;
-    // longStakeInterest = longStakeInterest / 3650000;
+    baseInterest = baseInterest / 3650000000;
 
     //Linear base interest 0-7.5 years rising over time from 0-100%
     // And Maxes out at 100% after 7.5 years (2777 days)
     longStakeInterest =
-      (Math.min(2777.5, daysServed) / 2777.5) * cumulativePrinciple * 0.1;
+      (Math.min(2777.5, i) / 2777.5) * cumulativePrinciple * 0.1;
     longStakeInterest = longStakeInterest / 365;
 
     allInterest = baseInterest + longStakeInterest;
@@ -239,13 +234,25 @@ function interestAtDayN2(daysServed, stakeDuration, principleAtDayN) {
 function displayProjectedPayout(amountToStake, numDays) {
   cumulativeInterest = 0;
   let baseInterest = 0.0;
-  let longStayInterest = 0.0;
+  let longStakeInterest = 0.0;
   let startingAmount = 0.0 + amountToStake;
   for (i = 0; i < numDays; i++) {
-    baseInterest = (0.2 * startingAmount) / 365;
-    longStayInterest = getLongStayInterestAtDayN(startingAmount, i);
-    console.log("long stay at day ", i, " = ", longStayInterest);
-    amountToStake = amountToStake + baseInterest + longStayInterest;
+    if (NETWORK_ID == 137 || NETWORK_ID == 80001 || NETWORK_ID == 97) {
+      baseInterest = (0.2 * amountToStake) / 365;
+      longStakeInterest =
+        (Math.min(2777.5, i + 1) / 2777.5) * amountToStake * 0.1;
+      longStakeInterest = longStakeInterest / 365;
+      // console.log(
+      //   "long stay at day for top networks ",
+      //   i,
+      //   " = ",
+      //   longStakeInterest
+      // );
+    } else {
+      baseInterest = (0.2 * startingAmount) / 365;
+      longStakeInterest = getLongStayInterestAtDayN(startingAmount, i);
+    }
+    amountToStake = amountToStake + baseInterest + longStakeInterest;
 
     // console.log(
     //   "amountToStake = ",

@@ -56,7 +56,7 @@ function initializeNetwork() {
     networkName = "BSC TESTNET";
     RPC_URL = "https://data-seed-prebsc-1-s1.binance.org:8545";
     baseDexURL = "https://pancake.kiemtienonline360.com/#/swap?outputCurrency=";
-    contractAddress = "0xF44Aa82Ae2eeEA2e67a7167Ad69BA23857fDA7ea";
+    contractAddress = "0x4b47ea2555D2867F6dfF9EFC14927d48a2e3106a";
   } else if (NETWORK_ID == 111) {
     networkName = "VLX TestNet";
     RPC_URL = "https://evmexplorer.testnet.velas.com/rpc";
@@ -66,10 +66,10 @@ function initializeNetwork() {
     RPC_URL = "https://rpc-mumbai.matic.today";
     baseDexURL = "https://app.sushi.com/swap?outputCurrency=";
   } else if (NETWORK_ID == 137) {
-    networkName = "Polygon TestNet";
+    networkName = "POLYGON/MATIC";
     RPC_URL = "https://polygon-rpc.com/";
     baseDexURL = "https://quickswap.exchange/#/swap?outputCurrency=";
-    contractAddress = "0xB441473B4d0280797B6390edE531A1d0679F15c9"; // Polygon test net address
+    contractAddress = "0x4b47ea2555D2867F6dfF9EFC14927d48a2e3106a"; // Polygon test net address
   } else if (NETWORK_ID == 43113) {
     networkName = "AVAX TESTNET";
     RPC_URL = "https://api.avax-test.network/ext/bc/C/rpc";
