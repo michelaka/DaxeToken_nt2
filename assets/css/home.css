@@ -157,10 +157,10 @@ p.p-heading {
   content: "live";
 }
 .phase:nth-of-type(3)::before {
-  content: "Live";
+  content: "presale";
 }
 .phase:nth-of-type(4)::before {
-  content: "";
+  content: "next chain";
 }
 .phase:nth-of-type(5)::before {
   content: "";
@@ -171,19 +171,19 @@ p.p-heading {
 
 /* DATES */
 .date:nth-of-type(1)::after {
-  content: "22 NOV";
+  content: "NOV/DEC";
 }
 .date:nth-of-type(2)::after {
-  content: "12 DEC";
+  content: "12 Jan";
 }
 .date:nth-of-type(3)::after {
-  content: "12 JAN";
+  content: "12 MAR";
 }
 .date:nth-of-type(4)::after {
-  content: "12 Feb";
+  content: "TBD";
 }
 .date:nth-of-type(5)::after {
-  content: "12 MAR";
+  content: "TBD";
 }
 .date:nth-of-type(6)::after {
   content: "-- TBD";
@@ -207,7 +207,7 @@ p.p-heading {
 #chain-list .coin-image {
   height: 90px;
 }
-#chain-list .coin-border:nth-of-type(4) .coin-image {
+#chain-list .coin-border:nth-of-type(5) .coin-image {
   height: 130px !important;
 }
 .daxe_stats .inner {
@@ -225,8 +225,8 @@ p.p-heading {
   padding: 2em;
   border-radius: 10px;
 }
-.stat:nth-of-type(3),
-.stat:nth-of-type(4) {
+.stat:nth-of-type(4),
+.stat:nth-of-type(5) {
   grid-column: 1/3;
 }
 p.stat_number {
