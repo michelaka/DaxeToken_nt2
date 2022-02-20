@@ -205,9 +205,10 @@ p.p-heading {
   margin: 0;
 }
 #chain-list .coin-image {
-  height: 90px;
+    height: 90px;
+    width: 90%;
 }
-#chain-list .coin-border:nth-of-type(5) .coin-image {
+#chain-list .coin-border:nth-of-type(4) .coin-image {
   height: 130px !important;
 }
 .daxe_stats .inner {
@@ -292,6 +293,21 @@ a.close {
   right: 2em;
 }
 
+/* RESPONSIVITY 1200 */
+
+@media screen and (max-width: 1200px) {
+  #chain-list .coin-border {
+    width: 30%;
+    margin-bottom: 4em;
+  }
+  #chain-list .coin-border:nth-of-type(4){
+    width:100%;
+  }
+  }
+
+
+
+
 @media screen and (max-width: 736px) {
   #chain-list .coin-border {
     width: 31%;
@@ -348,9 +364,9 @@ a.close {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   #chain-list .coin-border {
-    width: 46%;
+    width: 100%;
     margin-bottom: 50px;
   }
   .stats {
